@@ -1,0 +1,138 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif, serif;
+  margin: 0;
+  padding: 0;
+  background-color: #001833;
+  color: #fff;
+  }
+
+h1 {
+  margin: 10px;
+}
+footer p{
+  width: 100%;
+  background-color: #001833;
+  text-align: center; /* Centers the text horizontally */
+  padding: 10px 0;
+}
+  
+a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px; 
+}
+
+.car-card a img {
+  width: 100%;
+  height: auto;
+}
+
+.car-card a {
+  margin: 0px;
+  height: auto;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00254d;
+  padding: 10px 10px;
+}
+  
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+  
+header nav .btn {
+  background-color: #ffc107;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+  
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #001833;
+}
+
+.filters {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background-color: #001833;
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.car-card {
+  background-color: #00254d; /*#1C2951; */
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+.car-info {
+  padding: 0px;
+}
+
+.car-info .btn {
+  display: inline-block;
+  margin: 10px;
+  background-color: #ffc107;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.car-info h3 {
+  font-size: 16px; /* Slightly larger for the title */
+  margin: 5px 0; /* Add some space around the title */
+}
+
+.car-info p {
+  margin: 3px 0; /* Reduce space between paragraphs */
+  /*font-size: 13px; Slightly smaller font size for additional details */
+}
+
+.car-display {
+  margin: 50px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  align-self: center;
+  background-color: #00254d;
+  border-radius: 20px;
+}
+.car-display img {
+  border-radius: 8px;
+  width: 50%;
+  height: auto;
+}
+
+.car-display .car-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  background-color: #ffc107;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
