@@ -30,22 +30,24 @@ $cars = json_decode($carsJson, true);
     </section>
 
     <section class="filters">
-      <form method="GET" action="index.php">
-        <input type="number" name="passengers" min="0" placeholder="Seats">
-        from <input type="date" name="from">
-        to <input type="date" name="until">
-        <select name="transmission">
-          <option value="">Gear type</option>
-          <option value="Automatic">Automatic</option>
-          <option value="Manual">Manual</option>
-        </select>
-        <input type="number" name="price_min" placeholder="Min price">
-        <input type="number" name="price_max" placeholder="Max price">
-        <button type="submit" class="btn">Filter</button>
-      </form>
-    </section>
+   <form id="filter-form">
+    <input type="number" id="filter-passengers" name="passengers" min="0" placeholder="Seats">
+    from <input type="date" id="filter-from" name="from">
+    to <input type="date" id="filter-until" name="until">
+    <select id="filter-transmission" name="transmission">
+      <option value="">Gear type</option>
+      <option value="Automatic">Automatic</option>
+      <option value="Manual">Manual</option>
+    </select>
+    <input type="number" id="filter-price-min" name="price_min" placeholder="Min price">
+    <input type="number" id="filter-price-max" name="price_max" placeholder="Max price">
+    <button type="button" id="apply-filters" class="btn">Filter</button>
+  </form>
+</section>
 
-    <section class="car-list">
+
+
+    <section class="car-list" id="car-list">
       <?php foreach ($cars as $car): ?>
         <div class="car-card">
           <a href="details.php?id=<?= $car['id'] ?>">
@@ -60,6 +62,7 @@ $cars = json_decode($carsJson, true);
         </div>
       <?php endforeach; ?>
     </section>
+    <script src="refreshCars.js"></script>
   </main>
 
   <footer>
