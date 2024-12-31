@@ -1,7 +1,13 @@
 <?php
-// Read car data from JSON file
-$carsJson = file_get_contents('cars.json');
-$cars = json_decode($carsJson, true);
+session_start();
+//$carsJson = file_get_contents('cars.json');
+$cars = json_decode(file_get_contents("cars.json"), true);
+$reg = json_decode(file_get_contents("users.json"), true);
+$current_user = [];
+if (isset($_SESSION['user'])) {
+  $current_user = $_SESSION['user'];
+}
+var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +23,14 @@ $cars = json_decode($carsJson, true);
     <nav>
       <h1>iKarRental</h1>
       <div>
-        <a href="login.php">Login</a>
-        <a href="register.php" class="btn">Registration</a>
+        <?php if($current_user == null):?>
+          <a href="login.php">Login</a>
+          <a href="register.php" class="btn">Registration</a>
+        <?php endif; ?>
+        <?php if($current_user != null):?>
+          <a href="logout.php">Logout</a>
+          <a href="profile.php" class="btn">Profile</a>
+        <?php endif; ?>
       </div>
     </nav>
   </header>
@@ -26,7 +38,9 @@ $cars = json_decode($carsJson, true);
   <main>
     <section class="hero">
       <h2>Rent cars easily!</h2>
-      <a href="register.php" class="btn">Registration</a>
+      <?php if($current_user == null):?>
+        <a href="register.php" class="btn">Registration</a>
+      <?php endif; ?>
     </section>
 
     <section class="filters">
