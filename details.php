@@ -1,5 +1,6 @@
 <?php
-// Include necessary files
+session_start();
+
 require_once 'storage.php'; // Assuming Storage, JsonIO are in this file
 
 // Initialize data source
@@ -13,10 +14,11 @@ $carId = $_GET['id'] ?? null;
 $car = $storage->findById($carId);
 
 // Handle case where car is not found
-if (!$car) {
-    echo "<h1>Car not found</h1>";
-    exit;
+$current_user = [];
+if (isset($_SESSION['user'])) {
+  $current_user = $_SESSION['user'];
 }
+var_dump($_SESSION);
 
 ?>
 
@@ -32,11 +34,17 @@ if (!$car) {
 <header>
     <nav>
       <h1>iKarRental</h1>
-      <div>
-        <a href="index.php">Home</a>
-        <a href="login.php">Login</a>
-        <a href="register.php" class="btn">Registration</a>
-      </div>
+        <div>
+            <a href="index.php">Home</a>
+            <?php if($current_user == null):?>
+            <a href="login.php">Login</a>
+            <a href="register.php" class="btn">Registration</a>
+            <?php endif; ?>
+            <?php if($current_user != null):?>
+            <a href="logout.php">Logout</a>
+            <a href="profile.php" class="btn">Profile</a>
+            <?php endif; ?>
+        </div>
     </nav>
   </header>
 
@@ -55,7 +63,11 @@ if (!$car) {
             </div>
             <div class="actions">
                 <button class="btn">Select a date</button>
-                <button class="btn">Book it</button>
+                <?php if(isset($_SESSION['user'])): ?>
+                    <a href="book.php" class="btn">Book</a>
+                <?php else:?>
+                    <a href="login.php" class="btn">Book</a>
+                <?php endif; ?>
             </div>
         </div>
     </main>
