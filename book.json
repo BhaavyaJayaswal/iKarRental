@@ -4,5 +4,23 @@
         "EndDate": "2025-01-05",
         "UserEmail": "john.doe@example.com",
         "CarID": "1"
+    },
+    "4": {
+        "StartDate": "2025-01-16",
+        "EndDate": "2025-01-16",
+        "UserEmail": "b@gmail.com",
+        "CarID": "4"
+    },
+    "5": {
+        "StartDate": "2025-01-10",
+        "EndDate": "2025-01-25",
+        "UserEmail": "b@gmail.com",
+        "CarID": "5"
+    },
+    "10": {
+        "StartDate": "2025-01-01",
+        "EndDate": "2025-01-06",
+        "UserEmail": "b@gmail.com",
+        "CarID": "10"
     }
 }

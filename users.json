@@ -1,0 +1,26 @@
+{
+    "Alice Johnson": {
+        "FullName": "Alice Johnson",
+        "EmailAddress": "alice.johnson@example.com",
+        "Password": "Password123!",
+        "AdminStatus": false
+    },
+    "Bob Smith": {
+        "FullName": "Bob Smith",
+        "EmailAddress": "bob.smith@example.com",
+        "Password": "$2y$10$qrstuvwxabcdefghijklmnopqr.stuvwxyzabcdefghi",
+        "AdminStatus": true
+    },
+    "B J": {
+        "FullName": "B J",
+        "EmailAddress": "b@gmail.com",
+        "Password": "11223344",
+        "isAdmin": false
+    },
+    "": {
+        "FullName": "",
+        "EmailAddress": "",
+        "Password": "",
+        "isAdmin": false
+    }
+}

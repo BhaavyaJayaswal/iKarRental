@@ -1,23 +1,49 @@
 <?php
 session_start();
 
-require_once 'storage.php'; // Assuming Storage, JsonIO are in this file
+//require_once 'storage.php'; // Assuming Storage, JsonIO are in this file
+$cars = json_decode(file_get_contents("cars.json"), true);
 
 // Initialize data source
-$filename = 'cars.json'; // JSON file containing car data
-$storage = new Storage(new JsonIO($filename));
-
+//$filename = 'cars.json'; // JSON file containing car data
+//$storage = new Storage(new JsonIO($filename));
+$selected = false;
 // Get the car ID from the URL
 $carId = $_GET['id'] ?? null;
-
+$car = null;
+foreach ($cars as $item) {
+    if ($item['id'] == $carId) {
+        $car = $item;
+        break;
+    }
+}
 // Retrieve car details
-$car = $storage->findById($carId);
-
+//$car = $storage->findById($carId);
+var_dump($carId);
+var_dump($car);
 // Handle case where car is not found
 $current_user = [];
 if (isset($_SESSION['user'])) {
   $current_user = $_SESSION['user'];
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $start_date = $_POST['start_date'] ?? null;
+    $end_date = $_POST['end_date'] ?? null;
+
+    // Validate the dates
+    if ($start_date && $end_date && strtotime($start_date) && strtotime($end_date) && $start_date <= $end_date) {
+        // Store the dates in the session
+        $_SESSION['selected_dates'] = [
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'car_id' => $carId
+        ];
+        $selected = true;
+    } else {
+        $error = "Invalid date range. Please try again.";
+    }
+}
+
 var_dump($_SESSION);
 
 ?>
@@ -61,12 +87,26 @@ var_dump($_SESSION);
                     <h3><?php echo number_format($car['daily_price_huf'], 0, '.', ','); ?> HUF/day</h3>
                 </div>
             </div>
-            <div class="actions">
-                <button class="btn">Select a date</button>
+            <div class="actions book">
+            <form class="dates" method="post">
+                <label for="start_date">from:</label>
+                <input type="date" name="start_date" required>
+                <label for="end_date">to:</label>
+                <input type="date" name="end_date" required>
+                <button type="submit" class="btn">Select Dates</button>
+            </form>
+                <?php if($selected == true): ?>
+                    <span style="color: #ffc107; text-align: center;">
+                        Dates selected!
+                    </span>
+                <?php endif; ?>
                 <?php if(isset($_SESSION['user'])): ?>
                     <a href="book.php" class="btn">Book</a>
                 <?php else:?>
                     <a href="login.php" class="btn">Book</a>
+                    <span style="color: #ffc107; text-align: center;">
+                        (You're not logged in, and will be redirected to the login page first.)
+                    </span>
                 <?php endif; ?>
             </div>
         </div>
