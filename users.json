@@ -1,9 +1,9 @@
 {
     "Alice Johnson": {
         "FullName": "Alice Johnson",
-        "EmailAddress": "alice.johnson@example.com",
-        "Password": "Password123!",
-        "AdminStatus": false
+        "EmailAddress": "admin@ikarrental.hu",
+        "Password": "admin",
+        "AdminStatus": true
     },
     "Bob Smith": {
         "FullName": "Bob Smith",

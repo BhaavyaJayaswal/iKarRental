@@ -93,7 +93,7 @@ var_dump($_SESSION);
                 <input type="date" name="start_date" required>
                 <label for="end_date">to:</label>
                 <input type="date" name="end_date" required>
-                <button type="submit" class="btn">Select Dates</button>
+                <button type="submit" class="btn">Select these Dates</button>
             </form>
                 <?php if($selected == true): ?>
                     <span style="color: #ffc107; text-align: center;">

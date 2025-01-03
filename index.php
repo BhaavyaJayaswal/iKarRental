@@ -4,8 +4,11 @@ session_start();
 $cars = json_decode(file_get_contents("cars.json"), true);
 $reg = json_decode(file_get_contents("users.json"), true);
 $current_user = [];
+$isAdmin = false;
 if (isset($_SESSION['user'])) {
   $current_user = $_SESSION['user'];
+  $isAdmin = $_SESSION['isAdmin'];
+  var_dump($_SESSION['isAdmin']);
 }
 var_dump($_SESSION);
 ?>
@@ -41,6 +44,10 @@ var_dump($_SESSION);
       <?php if($current_user == null):?>
         <a href="register.php" class="btn">Registration</a>
       <?php endif; ?>
+    </section>
+
+    <section class="addCars">
+      <a href="add.php" class="btn">Add Cars</a>
     </section>
 
     <section class="filters">
@@ -80,7 +87,7 @@ var_dump($_SESSION);
   </main>
 
   <footer>
-    <p>&copy; 2024 iKarRental</p>
+    <p>&copy; 2025 iKarRental</p>
   </footer>
 </body>
 </html>

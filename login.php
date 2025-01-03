@@ -12,6 +12,11 @@
             $name = $name[0];
             if ($password === $users[$name]['Password']) {
                 $_SESSION['user'] = $name;
+                if ($users[$name]['AdminStatus'] == true){
+                    $_SESSION['isAdmin'] = true;
+                }
+                    else
+                    $_SESSION['isAdmin'] = false;
                 header('location: index.php');
             } else {
                 $_SESSION['loginerror'] = 2; // Incorrect password
@@ -21,7 +26,7 @@
         }
     }
     $loginerror = '';
-    $current_user = [];
+    //$current_user = [];
     if (isset($_SESSION['loginerror'])) {
         switch ($_SESSION['loginerror']) {
             case 1:
@@ -61,7 +66,7 @@
         <?php if (isset($_SESSION['loginerror'])): ?>
             <?php unset($_SESSION['loginerror'])?>
         <?php endif; ?>
-        
-    </form>
+        </form>
+
 </body>
 </html>
