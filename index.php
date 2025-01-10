@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$carsJson = file_get_contents('cars.json');
+
 $cars = json_decode(file_get_contents("cars.json"), true);
 $reg = json_decode(file_get_contents("users.json"), true);
 $current_user = [];
@@ -45,11 +45,11 @@ var_dump($_SESSION);
         <a href="register.php" class="btn">Registration</a>
       <?php endif; ?>
     </section>
-
-    <section class="addCars">
-      <a href="add.php" class="btn">Add Cars</a>
-    </section>
-
+    <?php if($isAdmin): ?>
+      <section class="addCars">
+        <a href="add.php" class="btn">Add Cars</a>
+      </section>
+    <?php endif; ?>
     <section class="filters">
    <form id="filter-form">
     <input type="number" id="filter-passengers" name="passengers" min="0" placeholder="Seats">
