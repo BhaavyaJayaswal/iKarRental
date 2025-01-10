@@ -45,27 +45,28 @@ var_dump($_SESSION);
         <a href="register.php" class="btn">Registration</a>
       <?php endif; ?>
     </section>
+
     <?php if($isAdmin): ?>
       <section class="addCars">
         <a href="add.php" class="btn">Add Cars</a>
       </section>
     <?php endif; ?>
-    <section class="filters">
-   <form id="filter-form">
-    <input type="number" id="filter-passengers" name="passengers" min="0" placeholder="Seats">
-    from <input type="date" id="filter-from" name="from">
-    to <input type="date" id="filter-until" name="until">
-    <select id="filter-transmission" name="transmission">
-      <option value="">Gear type</option>
-      <option value="Automatic">Automatic</option>
-      <option value="Manual">Manual</option>
-    </select>
-    <input type="number" id="filter-price-min" name="price_min" placeholder="Min price">
-    <input type="number" id="filter-price-max" name="price_max" placeholder="Max price">
-    <button type="button" id="apply-filters" class="btn">Filter</button>
-  </form>
-</section>
 
+    <section class="filters">
+      <form id="filter-form">
+        <input type="number" id="filter-passengers" name="passengers" min="0" placeholder="Seats">
+        from <input type="date" id="filter-from" name="from">
+        to <input type="date" id="filter-until" name="until">
+        <select id="filter-transmission" name="transmission">
+          <option value="">Gear type</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+        </select>
+        <input type="number" id="filter-price-min" name="price_min" placeholder="Min price">
+        <input type="number" id="filter-price-max" name="price_max" placeholder="Max price">
+        <button type="button" id="apply-filters" class="btn">Filter</button>
+      </form>
+    </section>
 
 
     <section class="car-list" id="car-list">
@@ -79,6 +80,9 @@ var_dump($_SESSION);
             <p><?= htmlspecialchars($car['passengers']) ?> seats - <?= htmlspecialchars($car['transmission']) ?></p>
             <p><?= number_format($car['daily_price_huf'], 0, '.', ',') ?> Ft</p>
             <a href="details.php?id=<?= htmlspecialchars($car['id']) ?>" class="btn">Book</a>
+            <?php if ($isAdmin): ?>
+            <a href="deleteCar.php?id=<?= htmlspecialchars($car['id']) ?>" class="btn delete-button">Delete</a>
+            <?php endif; ?>
           </div>
         </div>
       <?php endforeach; ?>
