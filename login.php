@@ -37,8 +37,7 @@
                 break;
         }
     }
-    var_dump($_SESSION);
-    //header('location: index.php');
+    //var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">

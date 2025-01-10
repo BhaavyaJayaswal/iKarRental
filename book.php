@@ -41,7 +41,7 @@ if ($isAvailable) {
         'CarID' => $carId
     ];
    
-    var_dump(json_decode(file_get_contents("book.json"), true));
+    //var_dump(json_decode(file_get_contents("book.json"), true));
 
     file_put_contents('book.json', json_encode($book, JSON_PRETTY_PRINT));
 } 

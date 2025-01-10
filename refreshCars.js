@@ -2,9 +2,7 @@ const filterForm = document.querySelector('#filter-form');
 const carList = document.querySelector('#car-list');
 const applyFiltersButton = document.querySelector('#apply-filters');
 
-// Function to fetch and refresh car list
 async function refreshCars() {
-    // Collect filter values
     const passengers = document.querySelector('#filter-passengers').value;
     const from = document.querySelector('#filter-from').value;
     const until = document.querySelector('#filter-until').value;
@@ -12,7 +10,6 @@ async function refreshCars() {
     const priceMin = document.querySelector('#filter-price-min').value;
     const priceMax = document.querySelector('#filter-price-max').value;
 
-    // Build query string
     const queryString = new URLSearchParams({
         ...(passengers && { passengers }),
         ...(from && { from }),
@@ -22,17 +19,14 @@ async function refreshCars() {
         ...(priceMax && { price_max: priceMax })
     });
 
-    // Fetch filtered results
     const response = await fetch('filterCars.php?' +queryString.toString());
     console.log('Request URL:', 'filterCars.php?' + queryString.toString());
     const cars = await response.json();
 
 
-    // Clear the car list
     carList.innerHTML = '';
     if (cars.length === 0) 
         carList.innerHTML = '<p>No cars found with the selected filters.</p>';    
-    // Populate the car list with filtered cars
     cars.forEach(car => {
         const carCard = document.createElement('div');
         carCard.classList.add('car-card');
@@ -52,5 +46,4 @@ async function refreshCars() {
     });
 }
 
-// Add event listener to filter button
 applyFiltersButton.addEventListener('click', refreshCars);

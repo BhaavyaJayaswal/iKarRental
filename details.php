@@ -17,11 +17,10 @@ foreach ($cars as $item) {
         break;
     }
 }
-// Retrieve car details
-//$car = $storage->findById($carId);
-var_dump($carId);
-var_dump($car);
-// Handle case where car is not found
+
+//var_dump($carId);
+//var_dump($car);
+
 $current_user = [];
 if (isset($_SESSION['user'])) {
   $current_user = $_SESSION['user'];
@@ -30,9 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $start_date = $_POST['start_date'] ?? null;
     $end_date = $_POST['end_date'] ?? null;
 
-    // Validate the dates
     if ($start_date && $end_date && strtotime($start_date) && strtotime($end_date) && $start_date <= $end_date) {
-        // Store the dates in the session
         $_SESSION['selected_dates'] = [
             'start_date' => $start_date,
             'end_date' => $end_date,
@@ -44,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 ?>
 

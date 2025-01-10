@@ -8,9 +8,9 @@ $isAdmin = false;
 if (isset($_SESSION['user'])) {
   $current_user = $_SESSION['user'];
   $isAdmin = $_SESSION['isAdmin'];
-  var_dump($_SESSION['isAdmin']);
+  //var_dump($_SESSION['isAdmin']);
 }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +82,7 @@ var_dump($_SESSION);
             <a href="details.php?id=<?= htmlspecialchars($car['id']) ?>" class="btn">Book</a>
             <?php if ($isAdmin): ?>
             <a href="deleteCar.php?id=<?= htmlspecialchars($car['id']) ?>" class="btn delete-button">Delete</a>
+            <a href="modifyCar.php?id=<?= htmlspecialchars($car['id']) ?>" class="btn modify-button">Modify</a>
             <?php endif; ?>
           </div>
         </div>
